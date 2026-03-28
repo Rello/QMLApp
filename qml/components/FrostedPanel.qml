@@ -14,39 +14,12 @@ Item {
     }
 
     Rectangle {
-        width: 220
-        height: 220
-        x: -56
-        y: 120
-        radius: 110
-        color: "#40FF9A8A"
-    }
-
-    Rectangle {
-        width: 210
-        height: 210
-        x: parent.width - 180
-        y: 22
-        radius: 105
-        color: "#4082D4FF"
-    }
-
-    Rectangle {
-        width: 190
-        height: 190
-        x: 94
-        y: parent.height - 148
-        radius: 95
-        color: "#33FFD68B"
-    }
-
-    Rectangle {
         anchors.fill: parent
         radius: 30
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#D9FFFFFF" }
-            GradientStop { position: 0.45; color: "#BEEFFFFF" }
-            GradientStop { position: 1.0; color: "#CCF8FBFF" }
+            GradientStop { position: 0.0; color: "#EBFFFFFF" }
+            GradientStop { position: 0.55; color: "#DFF6FBFF" }
+            GradientStop { position: 1.0; color: "#D5F0F9FF" }
         }
     }
 
@@ -63,4 +36,3 @@ Item {
         anchors.fill: parent
     }
 }
-

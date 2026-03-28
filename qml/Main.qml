@@ -8,8 +8,8 @@ import CloudPane
 Window {
     id: root
 
-    width: 332
-    height: appController.currentPage === "activity" ? 516 : 294
+    width: 320
+    height: appController.currentPage === "activity" ? 516 : 232
     visible: false
     color: "transparent"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
@@ -37,11 +37,11 @@ Window {
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: 16
-            spacing: 10
+            spacing: 8
 
             RowLayout {
                 Layout.fillWidth: true
-                spacing: 10
+                spacing: 8
 
                 Rectangle {
                     Layout.preferredWidth: 34
@@ -115,7 +115,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: appController.currentPage === "activity" ? 406 : 202
+                Layout.preferredHeight: appController.currentPage === "activity" ? 406 : 126
 
                 Loader {
                     anchors.fill: parent
@@ -130,15 +130,11 @@ Window {
 
         ColumnLayout {
             anchors.fill: parent
-            spacing: 10
+            spacing: 4
 
-            Rectangle {
+            Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 72
-                radius: 18
-                color: "#C7FFFFFF"
-                border.color: "#53FFFFFF"
-                border.width: 1
+                Layout.preferredHeight: 42
 
                 MouseArea {
                     anchors.fill: parent
@@ -147,22 +143,21 @@ Window {
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 14
-                    spacing: 12
+                    spacing: 10
 
                     Rectangle {
-                        Layout.preferredWidth: 34
-                        Layout.preferredHeight: 34
-                        radius: 17
-                        color: "#E5FFF0"
-                        border.color: "#89DCA9"
+                        Layout.preferredWidth: 26
+                        Layout.preferredHeight: 26
+                        radius: 13
+                        color: "#F1FFF6"
+                        border.color: "#8FD5A8"
                         border.width: 1
 
                         Text {
                             anchors.centerIn: parent
-                            text: "OK"
+                            text: "✓"
                             color: "#16964A"
-                            font.pixelSize: 10
+                            font.pixelSize: 13
                             font.weight: Font.Bold
                         }
                     }
@@ -174,7 +169,7 @@ Window {
                         Text {
                             text: appController.statusTitle
                             color: "#162033"
-                            font.pixelSize: 13
+                            font.pixelSize: 12
                             font.weight: Font.DemiBold
                             elide: Text.ElideRight
                         }
@@ -182,7 +177,67 @@ Window {
                         Text {
                             text: appController.statusSubtitle
                             color: "#617089"
-                            font.pixelSize: 10
+                            font.pixelSize: 9
+                            elide: Text.ElideRight
+                        }
+                    }
+
+                    Text {
+                        Layout.preferredWidth: 12
+                        Layout.preferredHeight: 12
+                        text: ">"
+                        color: "#1A2237"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                            opacity: 0.6
+                    }
+                }
+            }
+
+            Rectangle {
+                Layout.fillWidth: true
+                height: 1
+                color: "#24A0B3C8"
+            }
+
+            Item {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 34
+
+                RowLayout {
+                    anchors.fill: parent
+                    spacing: 10
+
+                    Rectangle {
+                        Layout.preferredWidth: 18
+                        Layout.preferredHeight: 18
+                        radius: 9
+                        color: "#F0F7FF"
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "+"
+                            color: "#2F88FF"
+                            font.pixelSize: 12
+                            font.weight: Font.Bold
+                        }
+                    }
+
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 1
+
+                        Text {
+                            text: "Get More Storage"
+                            color: "#172133"
+                            font.pixelSize: 11
+                            font.weight: Font.DemiBold
+                        }
+
+                        Text {
+                            text: "Compact CTA row for upgrades."
+                            color: "#627187"
+                            font.pixelSize: 9
                             elide: Text.ElideRight
                         }
                     }
@@ -201,55 +256,6 @@ Window {
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 50
-                radius: 16
-                color: "#BBFFFFFF"
-                border.color: "#42FFFFFF"
-                border.width: 1
-
-                RowLayout {
-                    anchors.fill: parent
-                    anchors.margins: 14
-                    spacing: 10
-
-                    Rectangle {
-                        Layout.preferredWidth: 24
-                        Layout.preferredHeight: 24
-                        radius: 12
-                        color: "#E9F4FF"
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "+"
-                            color: "#2F88FF"
-                            font.pixelSize: 14
-                            font.weight: Font.Bold
-                        }
-                    }
-
-                    ColumnLayout {
-                        Layout.fillWidth: true
-                        spacing: 1
-
-                        Text {
-                            text: "Get More Storage"
-                            color: "#172133"
-                            font.pixelSize: 12
-                            font.weight: Font.DemiBold
-                        }
-
-                        Text {
-                            text: "Compact CTA row for upgrades and expansion."
-                            color: "#627187"
-                            font.pixelSize: 10
-                            elide: Text.ElideRight
-                        }
-                    }
-                }
-            }
-
-            Rectangle {
-                Layout.fillWidth: true
                 height: 1
                 color: "#24A0B3C8"
             }
@@ -257,7 +263,8 @@ Window {
             RowLayout {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
-                spacing: 8
+                Layout.preferredHeight: 30
+                spacing: 10
 
                 Repeater {
                     model: appController.quickActionsModel
