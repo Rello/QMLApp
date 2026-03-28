@@ -27,6 +27,14 @@ jobs:
           chmod +x scripts/build-macos.sh
           ./scripts/build-macos.sh "${GITHUB_WORKSPACE}/build/macos"
 
+      - name: Deploy Qt frameworks and QML runtime
+        run: |
+          APP_PATH="$(find "${GITHUB_WORKSPACE}/build/macos" -maxdepth 4 -name '*.app' -type d | head -n 1)"
+          test -n "${APP_PATH}"
+          MACDEPLOYQT_BIN="$(find "${QT_ROOT_DIR}" -path '*/bin/macdeployqt' -type f | head -n 1)"
+          test -n "${MACDEPLOYQT_BIN}"
+          "${MACDEPLOYQT_BIN}" "${APP_PATH}" -qmldir="${GITHUB_WORKSPACE}/qml"
+
       - name: Package app artifact
         run: |
           APP_PATH="$(find "${GITHUB_WORKSPACE}/build/macos" -maxdepth 4 -name '*.app' -type d | head -n 1)"
