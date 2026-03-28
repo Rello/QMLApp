@@ -1,0 +1,44 @@
+name: Build macOS Prototype
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@v4
+
+      - name: Install Qt 6
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.7.3"
+          host: "mac"
+          target: "desktop"
+          arch: "clang_64"
+          modules: "qtsvg"
+          cache: "true"
+
+      - name: Build app bundle
+        run: |
+          chmod +x scripts/build-macos.sh
+          ./scripts/build-macos.sh "${GITHUB_WORKSPACE}/build/macos"
+
+      - name: Package app artifact
+        run: |
+          APP_PATH="$(find "${GITHUB_WORKSPACE}/build/macos" -maxdepth 4 -name '*.app' -type d | head -n 1)"
+          test -n "${APP_PATH}"
+          mkdir -p "${GITHUB_WORKSPACE}/dist"
+          ditto -c -k --sequesterRsrc --keepParent "${APP_PATH}" "${GITHUB_WORKSPACE}/dist/CloudPanePrototype-macos.zip"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CloudPanePrototype-macos
+          path: dist/CloudPanePrototype-macos.zip
+          if-no-files-found: error
+

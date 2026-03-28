@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <path d="M8 3h10l6 6v20H8z" fill="#F4F7FB" stroke="#CBD6E2" stroke-width="1.2"/>
+  <path d="M18 3v6h6" fill="#E0E7F4"/>
+  <rect x="6" y="18" width="10" height="10" rx="2" fill="#2F61D8"/>
+  <text x="11" y="25" fill="#fff" font-family="Arial, sans-serif" font-size="6" font-weight="700" text-anchor="middle">W</text>
+</svg>
+
