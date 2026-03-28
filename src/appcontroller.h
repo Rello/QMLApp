@@ -64,7 +64,7 @@ private:
 
     QString m_currentPage = QStringLiteral("home");
     bool m_popupVisible = false;
-    QString m_accountName = QStringLiteral("CloudPane Personal");
+    QString m_accountName = QStringLiteral("Nextcloud Desktop Client");
     QString m_statusTitle;
     QString m_statusSubtitle;
     int m_syncingCount = 0;

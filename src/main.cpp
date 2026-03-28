@@ -36,28 +36,6 @@ QIcon createTrayIcon()
     return QIcon(pixmap);
 }
 
-QIcon createMenuGlyphIcon(const QString &symbol, const QColor &background, const QColor &foreground, const QColor &border)
-{
-    QPixmap pixmap(18, 18);
-    pixmap.fill(Qt::transparent);
-
-    QPainter painter(&pixmap);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-
-    painter.setPen(QPen(border, 1.0));
-    painter.setBrush(background);
-    painter.drawRoundedRect(QRectF(1.0, 1.0, 16.0, 16.0), 5.0, 5.0);
-
-    QFont font = painter.font();
-    font.setBold(true);
-    font.setPixelSize(symbol == QStringLiteral("⋯") ? 13 : 11);
-    painter.setFont(font);
-    painter.setPen(foreground);
-    painter.drawText(QRectF(0.0, 0.0, 18.0, 18.0), Qt::AlignCenter, symbol);
-
-    painter.end();
-    return QIcon(pixmap);
-}
 }
 
 int main(int argc, char *argv[])
@@ -91,13 +69,13 @@ int main(int argc, char *argv[])
     QMenu trayMenu;
     trayMenu.setSeparatorsCollapsible(false);
 
-    auto *accountAction = trayMenu.addAction(QStringLiteral("CloudPane Personal"));
+    auto *accountAction = trayMenu.addAction(controller.accountName());
     accountAction->setEnabled(false);
 
     trayMenu.addSeparator();
 
     auto *statusAction = trayMenu.addAction(
-        createMenuGlyphIcon(QStringLiteral("✓"), QColor("#EAF8EE"), QColor("#1D8E46"), QColor("#A5D4B1")),
+        QIcon(QStringLiteral(":/qml/icons/status-check.svg")),
         controller.statusTitle());
     QObject::connect(statusAction, &QAction::triggered, &controller, [&controller]() {
         controller.showActivity();
@@ -105,7 +83,7 @@ int main(int argc, char *argv[])
     });
 
     auto *storageAction = trayMenu.addAction(
-        createMenuGlyphIcon(QStringLiteral("+"), QColor("#EAF2FF"), QColor("#2F6CDB"), QColor("#B7CAF5")),
+        QIcon(QStringLiteral(":/qml/icons/plus.svg")),
         QStringLiteral("Get More Storage"));
     QObject::connect(storageAction, &QAction::triggered, &controller, [&controller]() {
         controller.showHome();
@@ -115,7 +93,7 @@ int main(int argc, char *argv[])
     trayMenu.addSeparator();
 
     auto *filesAction = trayMenu.addAction(
-        createMenuGlyphIcon(QStringLiteral("□"), QColor("#F4F5F7"), QColor("#334155"), QColor("#D4D8DE")),
+        QIcon(QStringLiteral(":/qml/icons/files.svg")),
         QStringLiteral("Files"));
     QObject::connect(filesAction, &QAction::triggered, &controller, [&controller]() {
         controller.triggerAction(QStringLiteral("files"));
@@ -123,14 +101,14 @@ int main(int argc, char *argv[])
     });
 
     auto *addAction = trayMenu.addAction(
-        createMenuGlyphIcon(QStringLiteral("+"), QColor("#F4F5F7"), QColor("#334155"), QColor("#D4D8DE")),
+        QIcon(QStringLiteral(":/qml/icons/plus.svg")),
         QStringLiteral("Add"));
     QObject::connect(addAction, &QAction::triggered, &controller, [&controller]() {
         controller.triggerAction(QStringLiteral("add"));
     });
 
     auto *settingsAction = trayMenu.addAction(
-        createMenuGlyphIcon(QStringLiteral("⚙"), QColor("#F4F5F7"), QColor("#334155"), QColor("#D4D8DE")),
+        QIcon(QStringLiteral(":/qml/icons/settings.svg")),
         QStringLiteral("Settings"));
     QObject::connect(settingsAction, &QAction::triggered, &controller, [&controller]() {
         controller.triggerAction(QStringLiteral("settings"));
@@ -138,7 +116,7 @@ int main(int argc, char *argv[])
     });
 
     auto *moreAction = trayMenu.addAction(
-        createMenuGlyphIcon(QStringLiteral("⋯"), QColor("#F4F5F7"), QColor("#334155"), QColor("#D4D8DE")),
+        QIcon(QStringLiteral(":/qml/icons/more.svg")),
         QStringLiteral("More"));
     QObject::connect(moreAction, &QAction::triggered, &controller, [&controller]() {
         controller.triggerAction(QStringLiteral("more"));

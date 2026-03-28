@@ -7,27 +7,27 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        radius: 30
-        color: "#D4F7FBFF"
+        radius: 16
+        color: "#E8F4FAFF"
         border.color: "#76FFFFFF"
         border.width: 1
     }
 
     Rectangle {
         anchors.fill: parent
-        radius: 30
+        radius: 16
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#EBFFFFFF" }
-            GradientStop { position: 0.55; color: "#DFF6FBFF" }
-            GradientStop { position: 1.0; color: "#D5F0F9FF" }
+            GradientStop { position: 0.0; color: "#F3FFFFFF" }
+            GradientStop { position: 0.55; color: "#EAF7FBFF" }
+            GradientStop { position: 1.0; color: "#E1F2F8FF" }
         }
     }
 
     Rectangle {
         anchors.fill: parent
-        radius: 30
+        radius: 16
         color: "transparent"
-        border.color: "#4EFFFFFF"
+        border.color: "#60D7E1EA"
         border.width: 1
     }
 

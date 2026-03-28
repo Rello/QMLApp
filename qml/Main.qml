@@ -8,8 +8,8 @@ import CloudPane
 Window {
     id: root
 
-    width: 320
-    height: appController.currentPage === "activity" ? 516 : 202
+    width: 286
+    height: appController.currentPage === "activity" ? 500 : 148
     visible: false
     color: "transparent"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
@@ -36,74 +36,29 @@ Window {
 
         ColumnLayout {
             anchors.fill: parent
-            anchors.margins: 16
-            spacing: 8
+            anchors.margins: 12
+            spacing: 6
 
             RowLayout {
                 Layout.fillWidth: true
+                Layout.preferredHeight: 22
                 spacing: 8
 
-                Rectangle {
-                    Layout.preferredWidth: 34
-                    Layout.preferredHeight: 34
-                    radius: 11
-                    color: "#DDF4FF"
-                    border.color: "#7BC9FF"
-                    border.width: 1
-
-                    Text {
-                        anchors.centerIn: parent
-                        text: "CP"
-                        color: "#1657C6"
-                        font.pixelSize: 11
-                        font.weight: Font.Bold
-                    }
+                Image {
+                    Layout.preferredWidth: 16
+                    Layout.preferredHeight: 16
+                    source: "qrc:/qml/icons/app-cloud.svg"
+                    fillMode: Image.PreserveAspectFit
                 }
 
-                ColumnLayout {
+                Text {
                     Layout.fillWidth: true
-                    spacing: 2
-
-                    Text {
-                        text: appController.accountName
-                        color: "#1A2237"
-                        font.pixelSize: 13
-                        font.weight: Font.DemiBold
-                        elide: Text.ElideRight
-                    }
-
-                    Text {
-                        text: appController.currentPage === "activity" ? "Sync Activity" : "Tray Showcase"
-                        color: "#637087"
-                        font.pixelSize: 10
-                    }
-                }
-
-                Button {
-                    id: modeButton
-
-                    flat: true
-                    background: Rectangle {
-                        implicitWidth: 26
-                        implicitHeight: 26
-                        radius: 8
-                        color: modeButton.down ? "#22FFFFFF" : modeButton.hovered ? "#16FFFFFF" : "transparent"
-                    }
-                    contentItem: Text {
-                        text: appController.currentPage === "activity" ? "H" : "S"
-                        color: "#1A2237"
-                        font.pixelSize: 12
-                        font.weight: Font.Bold
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                    }
-                    onClicked: {
-                        if (appController.currentPage === "activity") {
-                            appController.showHome()
-                        } else {
-                            appController.showActivity()
-                        }
-                    }
+                    text: "Nextcloud Desktop Client"
+                    color: "#1A2237"
+                    font.pixelSize: 12
+                    font.weight: Font.DemiBold
+                    elide: Text.ElideRight
+                    verticalAlignment: Text.AlignVCenter
                 }
             }
 
@@ -115,7 +70,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: appController.currentPage === "activity" ? 406 : 94
+                Layout.preferredHeight: appController.currentPage === "activity" ? 398 : 78
 
                 Loader {
                     anchors.fill: parent
@@ -134,7 +89,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 30
+                Layout.preferredHeight: 24
 
                 MouseArea {
                     anchors.fill: parent
@@ -143,43 +98,33 @@ Window {
 
                 RowLayout {
                     anchors.fill: parent
-                    spacing: 10
+                    spacing: 8
 
-                    Rectangle {
-                        Layout.preferredWidth: 20
-                        Layout.preferredHeight: 20
-                        radius: 10
-                        color: "#F1FFF6"
-                        border.color: "#8FD5A8"
-                        border.width: 1
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "✓"
-                            color: "#16964A"
-                            font.pixelSize: 11
-                            font.weight: Font.Bold
-                        }
+                    Image {
+                        Layout.preferredWidth: 16
+                        Layout.preferredHeight: 16
+                        source: "qrc:/qml/icons/status-check.svg"
+                        fillMode: Image.PreserveAspectFit
                     }
 
                     Text {
                         Layout.fillWidth: true
                         text: appController.statusTitle
                         color: "#162033"
-                        font.pixelSize: 12
+                        font.pixelSize: 11
                         font.weight: Font.DemiBold
                         elide: Text.ElideRight
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Text {
-                        Layout.preferredWidth: 12
-                        Layout.preferredHeight: 12
+                        Layout.preferredWidth: 10
+                        Layout.preferredHeight: 10
                         text: ">"
                         color: "#1A2237"
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-                            opacity: 0.6
+                        opacity: 0.6
                     }
                 }
             }
@@ -192,25 +137,17 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 28
+                Layout.preferredHeight: 24
 
                 RowLayout {
                     anchors.fill: parent
-                    spacing: 10
+                    spacing: 8
 
-                    Rectangle {
+                    Image {
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
-                        radius: 8
-                        color: "#F0F7FF"
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: "+"
-                            color: "#2F88FF"
-                            font.pixelSize: 11
-                            font.weight: Font.Bold
-                        }
+                        source: "qrc:/qml/icons/plus.svg"
+                        fillMode: Image.PreserveAspectFit
                     }
 
                     Text {
@@ -224,8 +161,8 @@ Window {
                     }
 
                     Text {
-                        Layout.preferredWidth: 12
-                        Layout.preferredHeight: 12
+                        Layout.preferredWidth: 10
+                        Layout.preferredHeight: 10
                         text: ">"
                         color: "#1A2237"
                         horizontalAlignment: Text.AlignHCenter
@@ -244,8 +181,8 @@ Window {
             RowLayout {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
-                Layout.preferredHeight: 28
-                spacing: 8
+                Layout.preferredHeight: 24
+                spacing: 10
 
                 Repeater {
                     model: appController.quickActionsModel

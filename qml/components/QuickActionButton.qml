@@ -24,12 +24,11 @@ Button {
         border.width: 1
     }
 
-    contentItem: Text {
-        text: root.iconSource
-        color: "#182338"
-        font.pixelSize: root.iconSource === "⋯" ? 15 : 12
-        font.weight: Font.DemiBold
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
+    contentItem: Image {
+        source: root.iconSource
+        sourceSize.width: 16
+        sourceSize.height: 16
+        fillMode: Image.PreserveAspectFit
+        anchors.centerIn: parent
     }
 }

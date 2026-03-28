@@ -49,10 +49,10 @@ AppController::AppController(QObject *parent)
     , m_syncActivityModel(this)
 {
     m_quickActionsModel.setItems({
-        { QStringLiteral("files"), QStringLiteral("Files"), QStringLiteral("□") },
-        { QStringLiteral("add"), QStringLiteral("Add"), QStringLiteral("+") },
-        { QStringLiteral("settings"), QStringLiteral("Settings"), QStringLiteral("⚙") },
-        { QStringLiteral("more"), QStringLiteral("More"), QStringLiteral("⋯") },
+        { QStringLiteral("files"), QStringLiteral("Files"), QStringLiteral("qrc:/qml/icons/files.svg") },
+        { QStringLiteral("add"), QStringLiteral("Add"), QStringLiteral("qrc:/qml/icons/plus.svg") },
+        { QStringLiteral("settings"), QStringLiteral("Settings"), QStringLiteral("qrc:/qml/icons/settings.svg") },
+        { QStringLiteral("more"), QStringLiteral("More"), QStringLiteral("qrc:/qml/icons/more.svg") },
     });
 
     seedScenario();
