@@ -262,23 +262,19 @@ Window {
                 onClicked: appController.showHome()
             }
 
-            Rectangle {
+            Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 72
-                radius: 20
-                color: "#EEF4FA"
-                border.color: "#D3DEEA"
-                border.width: 1
+                Layout.preferredHeight: 46
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 16
-                    spacing: 12
+                    spacing: 10
 
                     Rectangle {
-                        Layout.preferredWidth: 38
-                        Layout.preferredHeight: 38
-                        radius: 19
+                        Layout.preferredWidth: 28
+                        Layout.preferredHeight: 28
+                        Layout.alignment: Qt.AlignTop
+                        radius: 14
                         color: "#E4EEFB"
                         border.color: "#B5CBEC"
                         border.width: 1
@@ -287,36 +283,42 @@ Window {
                             anchors.centerIn: parent
                             text: "S"
                             color: "#2F88FF"
-                            font.pixelSize: 15
+                            font.pixelSize: 12
                             font.weight: Font.Bold
                         }
                     }
 
                     ColumnLayout {
                         Layout.fillWidth: true
-                        spacing: 1
+                        spacing: 0
 
                         Text {
                             text: appController.statusTitle
                             color: "#172033"
-                            font.pixelSize: 16
+                            font.pixelSize: 14
                             font.weight: Font.DemiBold
                         }
 
                         Text {
                             text: appController.statusSubtitle
                             color: "#607188"
-                            font.pixelSize: 11
+                            font.pixelSize: 10
                         }
                     }
                 }
+            }
+
+            Rectangle {
+                Layout.fillWidth: true
+                height: 1
+                color: "#D4DEE9"
             }
 
             ListView {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 clip: true
-                spacing: 6
+                spacing: 0
                 model: appController.syncActivityModel
                 boundsBehavior: Flickable.StopAtBounds
 

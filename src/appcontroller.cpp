@@ -10,8 +10,8 @@ QVector<SyncItem> initialSyncItems()
 {
     return {
         {
-            QStringLiteral("Quarterly Planning Notes.docx"),
-            QStringLiteral("Operations workspace"),
+            QStringLiteral("Q2_Rollout_Checklist_Final.docx"),
+            QStringLiteral("Operations"),
             QStringLiteral("W"),
             QStringLiteral("syncing"),
             {},
@@ -20,7 +20,7 @@ QVector<SyncItem> initialSyncItems()
             0.42,
         },
         {
-            QStringLiteral("Launch Budget v5.xlsx"),
+            QStringLiteral("2026_Event_Budget_Approved.xlsx"),
             QStringLiteral("Finance"),
             QStringLiteral("X"),
             QStringLiteral("complete"),
@@ -30,7 +30,7 @@ QVector<SyncItem> initialSyncItems()
             0.0,
         },
         {
-            QStringLiteral("Customer Interview Recap.txt"),
+            QStringLiteral("Customer_Interview_Transcript_Munich.txt"),
             QStringLiteral("Research"),
             QStringLiteral("T"),
             QStringLiteral("complete"),
@@ -40,7 +40,7 @@ QVector<SyncItem> initialSyncItems()
             0.0,
         },
         {
-            QStringLiteral("Board Meeting Slides.pptx"),
+            QStringLiteral("Board_Update_Deck_v7.pptx"),
             QStringLiteral("Leadership"),
             QStringLiteral("P"),
             QStringLiteral("complete"),
@@ -50,7 +50,7 @@ QVector<SyncItem> initialSyncItems()
             0.0,
         },
         {
-            QStringLiteral("Brand Guidelines Review.pdf"),
+            QStringLiteral("Brand_Guidelines_Review_Comments.pdf"),
             QStringLiteral("Marketing"),
             QStringLiteral("B"),
             QStringLiteral("complete"),

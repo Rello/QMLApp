@@ -86,7 +86,7 @@ Button {
                         width: 3
                         height: 3
                         radius: 1.5
-                        color: "#394557"
+                        color: "#3A4557"
                     }
                 }
             }
