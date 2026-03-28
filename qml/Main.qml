@@ -9,12 +9,15 @@ Window {
     id: root
 
     width: 286
-    height: appController.currentPage === "activity" ? 500 : 148
+    height: appController.currentPage === "activity" ? 500 : 164
     visible: false
     color: "transparent"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     modality: Qt.NonModal
     title: "CloudPane Prototype"
+    readonly property int menuTitleFontSize: Math.max(14, Qt.application.font.pixelSize > 0 ? Qt.application.font.pixelSize + 1 : 14)
+    readonly property int menuBodyFontSize: Math.max(13, Qt.application.font.pixelSize > 0 ? Qt.application.font.pixelSize + 1 : 13)
+    readonly property int menuMetaFontSize: Math.max(12, Qt.application.font.pixelSize > 0 ? Qt.application.font.pixelSize : 12)
 
     Component.onCompleted: appController.registerPopup(root)
     onActiveChanged: {
@@ -37,11 +40,11 @@ Window {
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: 12
-            spacing: 6
+            spacing: 8
 
             RowLayout {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 22
+                Layout.preferredHeight: 24
                 spacing: 8
 
                 Image {
@@ -55,9 +58,11 @@ Window {
                     Layout.fillWidth: true
                     text: "Nextcloud Desktop Client"
                     color: "#1A2237"
-                    font.pixelSize: 12
-                    font.weight: Font.DemiBold
+                    font.family: Qt.application.font.family
+                    font.pixelSize: root.menuTitleFontSize
+                    font.weight: Font.Normal
                     elide: Text.ElideRight
+                    renderType: Text.NativeRendering
                     verticalAlignment: Text.AlignVCenter
                 }
             }
@@ -89,7 +94,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 24
+                Layout.preferredHeight: 30
 
                 MouseArea {
                     anchors.fill: parent
@@ -111,19 +116,25 @@ Window {
                         Layout.fillWidth: true
                         text: appController.statusTitle
                         color: "#162033"
-                        font.pixelSize: 11
-                        font.weight: Font.DemiBold
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuBodyFontSize
+                        font.weight: Font.Normal
                         elide: Text.ElideRight
+                        renderType: Text.NativeRendering
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Text {
                         Layout.preferredWidth: 10
-                        Layout.preferredHeight: 10
+                        Layout.preferredHeight: 12
                         text: ">"
                         color: "#1A2237"
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuMetaFontSize
+                        font.weight: Font.Normal
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
+                        renderType: Text.NativeRendering
                         opacity: 0.6
                     }
                 }
@@ -137,7 +148,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 24
+                Layout.preferredHeight: 30
 
                 RowLayout {
                     anchors.fill: parent
@@ -154,19 +165,25 @@ Window {
                         Layout.fillWidth: true
                         text: "Get More Storage"
                         color: "#172133"
-                        font.pixelSize: 11
-                        font.weight: Font.DemiBold
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuBodyFontSize
+                        font.weight: Font.Normal
                         elide: Text.ElideRight
+                        renderType: Text.NativeRendering
                         verticalAlignment: Text.AlignVCenter
                     }
 
                     Text {
                         Layout.preferredWidth: 10
-                        Layout.preferredHeight: 10
+                        Layout.preferredHeight: 12
                         text: ">"
                         color: "#1A2237"
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuMetaFontSize
+                        font.weight: Font.Normal
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
+                        renderType: Text.NativeRendering
                         opacity: 0.6
                     }
                 }
@@ -181,7 +198,7 @@ Window {
             RowLayout {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
-                Layout.preferredHeight: 24
+                Layout.preferredHeight: 34
                 spacing: 10
 
                 Repeater {

@@ -24,11 +24,18 @@ Button {
         border.width: 1
     }
 
-    contentItem: Image {
-        source: root.iconSource
-        sourceSize.width: 16
-        sourceSize.height: 16
-        fillMode: Image.PreserveAspectFit
-        anchors.centerIn: parent
+    contentItem: Item {
+        implicitWidth: 18
+        implicitHeight: 18
+
+        Image {
+            anchors.centerIn: parent
+            width: 16
+            height: 16
+            source: root.iconSource
+            sourceSize.width: 16
+            sourceSize.height: 16
+            fillMode: Image.PreserveAspectFit
+        }
     }
 }

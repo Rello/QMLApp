@@ -9,7 +9,7 @@ Item {
         anchors.fill: parent
         radius: 16
         color: "#E8F4FAFF"
-        border.color: "#76FFFFFF"
+        border.color: "#DFFFFFFF"
         border.width: 1
     }
 
@@ -27,7 +27,7 @@ Item {
         anchors.fill: parent
         radius: 16
         color: "transparent"
-        border.color: "#60D7E1EA"
+        border.color: "#F2FFFFFF"
         border.width: 1
     }
 

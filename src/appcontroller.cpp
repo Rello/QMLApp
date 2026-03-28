@@ -249,7 +249,7 @@ void AppController::repositionPopup()
 
     if (trayRect.isValid()) {
         x = trayRect.center().x() - popupSize.width() / 2;
-        y = trayRect.bottom() + 10;
+        y = trayRect.bottom() + 4;
     }
 
     x = qBound(availableGeometry.left() + 16, x, availableGeometry.right() - popupSize.width() - 16);
