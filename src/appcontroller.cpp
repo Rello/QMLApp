@@ -107,6 +107,11 @@ void AppController::togglePopup()
     setPopupVisible(!m_popupVisible);
 }
 
+void AppController::showPopup()
+{
+    setPopupVisible(true);
+}
+
 void AppController::hidePopup()
 {
     setPopupVisible(false);

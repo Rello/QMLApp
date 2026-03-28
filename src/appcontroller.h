@@ -37,6 +37,7 @@ public:
     QObject *quickActionsModel();
 
     Q_INVOKABLE void togglePopup();
+    Q_INVOKABLE void showPopup();
     Q_INVOKABLE void hidePopup();
     Q_INVOKABLE void showHome();
     Q_INVOKABLE void showActivity();
@@ -74,4 +75,3 @@ private:
     SyncActivityModel m_syncActivityModel;
     QTimer m_scenarioTimer;
 };
-

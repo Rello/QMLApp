@@ -16,18 +16,18 @@ Button {
     ToolTip.text: label
 
     background: Rectangle {
-        implicitWidth: 30
-        implicitHeight: 30
-        radius: 9
-        color: root.down ? "#28E7F1FA" : root.hovered ? "#20E7F1FA" : "#12FFFFFF"
-        border.color: root.hovered || root.down ? "#45A4B6C9" : "#22A4B6C9"
+        implicitWidth: 28
+        implicitHeight: 28
+        radius: 8
+        color: root.down ? "#32E7F1FA" : root.hovered ? "#24E7F1FA" : "#18FFFFFF"
+        border.color: root.hovered || root.down ? "#55A4B6C9" : "#34A4B6C9"
         border.width: 1
     }
 
     contentItem: Text {
         text: root.iconSource
         color: "#182338"
-        font.pixelSize: root.iconSource === "⋯" ? 16 : 13
+        font.pixelSize: root.iconSource === "⋯" ? 15 : 12
         font.weight: Font.DemiBold
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

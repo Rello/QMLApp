@@ -9,7 +9,7 @@ Window {
     id: root
 
     width: 320
-    height: appController.currentPage === "activity" ? 516 : 232
+    height: appController.currentPage === "activity" ? 516 : 202
     visible: false
     color: "transparent"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
@@ -115,7 +115,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: appController.currentPage === "activity" ? 406 : 126
+                Layout.preferredHeight: appController.currentPage === "activity" ? 406 : 94
 
                 Loader {
                     anchors.fill: parent
@@ -130,11 +130,11 @@ Window {
 
         ColumnLayout {
             anchors.fill: parent
-            spacing: 4
+            spacing: 0
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 42
+                Layout.preferredHeight: 30
 
                 MouseArea {
                     anchors.fill: parent
@@ -146,9 +146,9 @@ Window {
                     spacing: 10
 
                     Rectangle {
-                        Layout.preferredWidth: 26
-                        Layout.preferredHeight: 26
-                        radius: 13
+                        Layout.preferredWidth: 20
+                        Layout.preferredHeight: 20
+                        radius: 10
                         color: "#F1FFF6"
                         border.color: "#8FD5A8"
                         border.width: 1
@@ -157,29 +157,19 @@ Window {
                             anchors.centerIn: parent
                             text: "✓"
                             color: "#16964A"
-                            font.pixelSize: 13
+                            font.pixelSize: 11
                             font.weight: Font.Bold
                         }
                     }
 
-                    ColumnLayout {
+                    Text {
                         Layout.fillWidth: true
-                        spacing: 3
-
-                        Text {
-                            text: appController.statusTitle
-                            color: "#162033"
-                            font.pixelSize: 12
-                            font.weight: Font.DemiBold
-                            elide: Text.ElideRight
-                        }
-
-                        Text {
-                            text: appController.statusSubtitle
-                            color: "#617089"
-                            font.pixelSize: 9
-                            elide: Text.ElideRight
-                        }
+                        text: appController.statusTitle
+                        color: "#162033"
+                        font.pixelSize: 12
+                        font.weight: Font.DemiBold
+                        elide: Text.ElideRight
+                        verticalAlignment: Text.AlignVCenter
                     }
 
                     Text {
@@ -202,44 +192,35 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 34
+                Layout.preferredHeight: 28
 
                 RowLayout {
                     anchors.fill: parent
                     spacing: 10
 
                     Rectangle {
-                        Layout.preferredWidth: 18
-                        Layout.preferredHeight: 18
-                        radius: 9
+                        Layout.preferredWidth: 16
+                        Layout.preferredHeight: 16
+                        radius: 8
                         color: "#F0F7FF"
 
                         Text {
                             anchors.centerIn: parent
                             text: "+"
                             color: "#2F88FF"
-                            font.pixelSize: 12
+                            font.pixelSize: 11
                             font.weight: Font.Bold
                         }
                     }
 
-                    ColumnLayout {
+                    Text {
                         Layout.fillWidth: true
-                        spacing: 1
-
-                        Text {
-                            text: "Get More Storage"
-                            color: "#172133"
-                            font.pixelSize: 11
-                            font.weight: Font.DemiBold
-                        }
-
-                        Text {
-                            text: "Compact CTA row for upgrades."
-                            color: "#627187"
-                            font.pixelSize: 9
-                            elide: Text.ElideRight
-                        }
+                        text: "Get More Storage"
+                        color: "#172133"
+                        font.pixelSize: 11
+                        font.weight: Font.DemiBold
+                        elide: Text.ElideRight
+                        verticalAlignment: Text.AlignVCenter
                     }
 
                     Text {
@@ -263,8 +244,8 @@ Window {
             RowLayout {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
-                Layout.preferredHeight: 30
-                spacing: 10
+                Layout.preferredHeight: 28
+                spacing: 8
 
                 Repeater {
                     model: appController.quickActionsModel
