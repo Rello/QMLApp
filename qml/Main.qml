@@ -8,8 +8,9 @@ import CloudPane
 Window {
     id: root
 
-    width: 286
-    height: appController.currentPage === "activity" ? 500 : 164
+    readonly property bool activityPage: appController.currentPage === "activity"
+    width: activityPage ? 372 : 286
+    height: activityPage ? 488 : 188
     visible: false
     color: "transparent"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
@@ -36,6 +37,13 @@ Window {
 
         anchors.fill: parent
         anchors.margins: 8
+        panelRadius: activityPage ? 22 : 16
+        baseColor: activityPage ? "#F4F7FBF4" : "#E8F4FAFF"
+        baseBorderColor: activityPage ? "#D7E0EB" : "#DFFFFFFF"
+        overlayStartColor: activityPage ? "#FFFFFFFF" : "#F3FFFFFF"
+        overlayMidColor: activityPage ? "#F8FBFF" : "#EAF7FBFF"
+        overlayEndColor: activityPage ? "#EEF3F9" : "#E1F2F8FF"
+        highlightBorderColor: activityPage ? "#F7FBFF" : "#F2FFFFFF"
 
         ColumnLayout {
             anchors.fill: parent
@@ -70,16 +78,16 @@ Window {
             Rectangle {
                 Layout.fillWidth: true
                 height: 1
-                color: "#24A0B3C8"
+                color: activityPage ? "#D4DEE9" : "#24A0B3C8"
             }
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: appController.currentPage === "activity" ? 398 : 78
+                Layout.preferredHeight: activityPage ? 386 : 112
 
                 Loader {
                     anchors.fill: parent
-                    sourceComponent: appController.currentPage === "activity" ? activityView : homeView
+                    sourceComponent: activityPage ? activityView : homeView
                 }
             }
         }
@@ -94,48 +102,47 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 30
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: appController.showActivity()
-                }
+                Layout.preferredHeight: 38
 
                 RowLayout {
                     anchors.fill: parent
                     spacing: 8
 
                     Image {
+                        Layout.alignment: Qt.AlignTop
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
                         source: "qrc:/qml/icons/status-check.svg"
                         fillMode: Image.PreserveAspectFit
                     }
 
-                    Text {
+                    ColumnLayout {
                         Layout.fillWidth: true
-                        text: appController.statusTitle
-                        color: "#162033"
-                        font.family: Qt.application.font.family
-                        font.pixelSize: root.menuBodyFontSize
-                        font.weight: Font.Normal
-                        elide: Text.ElideRight
-                        renderType: Text.NativeRendering
-                        verticalAlignment: Text.AlignVCenter
-                    }
+                        spacing: 1
 
-                    Text {
-                        Layout.preferredWidth: 10
-                        Layout.preferredHeight: 12
-                        text: ">"
-                        color: "#1A2237"
-                        font.family: Qt.application.font.family
-                        font.pixelSize: root.menuMetaFontSize
-                        font.weight: Font.Normal
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        renderType: Text.NativeRendering
-                        opacity: 0.6
+                        Text {
+                            Layout.fillWidth: true
+                            text: "cloud.nextcloud.com"
+                            color: "#162033"
+                            font.family: Qt.application.font.family
+                            font.pixelSize: root.menuBodyFontSize
+                            font.weight: Font.Normal
+                            elide: Text.ElideRight
+                            renderType: Text.NativeRendering
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
+                        Text {
+                            Layout.fillWidth: true
+                            text: "OK"
+                            color: "#1C9A4B"
+                            font.family: Qt.application.font.family
+                            font.pixelSize: root.menuMetaFontSize
+                            font.weight: Font.Normal
+                            elide: Text.ElideRight
+                            renderType: Text.NativeRendering
+                            verticalAlignment: Text.AlignVCenter
+                        }
                     }
                 }
             }
@@ -148,43 +155,47 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 30
+                Layout.preferredHeight: 38
 
                 RowLayout {
                     anchors.fill: parent
                     spacing: 8
 
                     Image {
+                        Layout.alignment: Qt.AlignTop
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
-                        source: "qrc:/qml/icons/plus.svg"
+                        source: "qrc:/qml/icons/status-check.svg"
                         fillMode: Image.PreserveAspectFit
                     }
 
-                    Text {
+                    ColumnLayout {
                         Layout.fillWidth: true
-                        text: "Get More Storage"
-                        color: "#172133"
-                        font.family: Qt.application.font.family
-                        font.pixelSize: root.menuBodyFontSize
-                        font.weight: Font.Normal
-                        elide: Text.ElideRight
-                        renderType: Text.NativeRendering
-                        verticalAlignment: Text.AlignVCenter
-                    }
+                        spacing: 1
 
-                    Text {
-                        Layout.preferredWidth: 10
-                        Layout.preferredHeight: 12
-                        text: ">"
-                        color: "#1A2237"
-                        font.family: Qt.application.font.family
-                        font.pixelSize: root.menuMetaFontSize
-                        font.weight: Font.Normal
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        renderType: Text.NativeRendering
-                        opacity: 0.6
+                        Text {
+                            Layout.fillWidth: true
+                            text: "localhost:3032"
+                            color: "#162033"
+                            font.family: Qt.application.font.family
+                            font.pixelSize: root.menuBodyFontSize
+                            font.weight: Font.Normal
+                            elide: Text.ElideRight
+                            renderType: Text.NativeRendering
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
+                        Text {
+                            Layout.fillWidth: true
+                            text: "OK"
+                            color: "#1C9A4B"
+                            font.family: Qt.application.font.family
+                            font.pixelSize: root.menuMetaFontSize
+                            font.weight: Font.Normal
+                            elide: Text.ElideRight
+                            renderType: Text.NativeRendering
+                            verticalAlignment: Text.AlignVCenter
+                        }
                     }
                 }
             }
@@ -197,18 +208,29 @@ Window {
 
             RowLayout {
                 Layout.fillWidth: true
-                Layout.alignment: Qt.AlignHCenter
                 Layout.preferredHeight: 34
                 spacing: 10
 
-                Repeater {
-                    model: appController.quickActionsModel
+                Item {
+                    Layout.fillWidth: true
+                }
 
-                    QuickActionButton {
-                        label: model.label
-                        iconSource: model.iconName
-                        onClicked: appController.triggerAction(model.id)
-                    }
+                QuickActionButton {
+                    label: "Add"
+                    iconName: "add"
+                    onClicked: appController.triggerAction("add")
+                }
+
+                QuickActionButton {
+                    label: "More"
+                    iconName: "more"
+                    onClicked: appController.triggerAction("more")
+                }
+
+                QuickActionButton {
+                    label: "Settings"
+                    iconName: "settings"
+                    onClicked: appController.triggerAction("settings")
                 }
             }
         }
@@ -219,7 +241,7 @@ Window {
 
         ColumnLayout {
             anchors.fill: parent
-            spacing: 14
+            spacing: 10
 
             Button {
                 flat: true
@@ -229,14 +251,14 @@ Window {
 
                     Text {
                         text: "<"
-                        color: "#1D2940"
+                        color: "#22324D"
                         font.pixelSize: 14
                         font.weight: Font.Bold
                     }
 
                     Text {
                         text: "Back to overview"
-                        color: "#1D2940"
+                        color: "#22324D"
                         font.pixelSize: 12
                         font.weight: Font.Medium
                     }
@@ -246,23 +268,23 @@ Window {
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 82
-                radius: 22
-                color: "#B6FFFFFF"
-                border.color: "#50FFFFFF"
+                Layout.preferredHeight: 72
+                radius: 20
+                color: "#EEF4FA"
+                border.color: "#D3DEEA"
                 border.width: 1
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 18
-                    spacing: 14
+                    anchors.margins: 16
+                    spacing: 12
 
                     Rectangle {
-                        Layout.preferredWidth: 42
-                        Layout.preferredHeight: 42
-                        radius: 21
-                        color: "#E9F4FF"
-                        border.color: "#8AC5FF"
+                        Layout.preferredWidth: 38
+                        Layout.preferredHeight: 38
+                        radius: 19
+                        color: "#E4EEFB"
+                        border.color: "#B5CBEC"
                         border.width: 1
 
                         Text {
@@ -276,19 +298,19 @@ Window {
 
                     ColumnLayout {
                         Layout.fillWidth: true
-                        spacing: 2
+                        spacing: 1
 
                         Text {
                             text: appController.statusTitle
                             color: "#172033"
-                            font.pixelSize: 17
+                            font.pixelSize: 16
                             font.weight: Font.DemiBold
                         }
 
                         Text {
                             text: appController.statusSubtitle
                             color: "#607188"
-                            font.pixelSize: 12
+                            font.pixelSize: 11
                         }
                     }
                 }
@@ -298,7 +320,7 @@ Window {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 clip: true
-                spacing: 10
+                spacing: 6
                 model: appController.syncActivityModel
                 boundsBehavior: Flickable.StopAtBounds
 

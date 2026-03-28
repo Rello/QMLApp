@@ -10,33 +10,53 @@ QVector<SyncItem> initialSyncItems()
 {
     return {
         {
-            QStringLiteral("Program Evaluation Report.docx"),
-            QStringLiteral("Quarterly narrative update"),
+            QStringLiteral("Quarterly Planning Notes.docx"),
+            QStringLiteral("Operations workspace"),
             QStringLiteral("W"),
             QStringLiteral("syncing"),
             {},
-            1.6,
-            4.0,
-            0.45,
+            1.2,
+            3.8,
+            0.42,
         },
         {
-            QStringLiteral("Budget Report.xlsx"),
-            QStringLiteral("Finance workspace"),
+            QStringLiteral("Launch Budget v5.xlsx"),
+            QStringLiteral("Finance"),
             QStringLiteral("X"),
-            QStringLiteral("syncing"),
-            {},
-            0.37,
+            QStringLiteral("complete"),
+            QStringLiteral("Uploaded \xc2\xb7 2 minutes ago"),
             1.9,
-            0.24,
+            1.9,
+            0.0,
         },
         {
-            QStringLiteral("Product Storytelling.pptx"),
-            QStringLiteral("Narrative deck"),
+            QStringLiteral("Customer Interview Recap.txt"),
+            QStringLiteral("Research"),
+            QStringLiteral("T"),
+            QStringLiteral("complete"),
+            QStringLiteral("Uploaded \xc2\xb7 9 minutes ago"),
+            0.3,
+            0.3,
+            0.0,
+        },
+        {
+            QStringLiteral("Board Meeting Slides.pptx"),
+            QStringLiteral("Leadership"),
             QStringLiteral("P"),
             QStringLiteral("complete"),
             QStringLiteral("Uploaded \xc2\xb7 21 minutes ago"),
             2.8,
             2.8,
+            0.0,
+        },
+        {
+            QStringLiteral("Brand Guidelines Review.pdf"),
+            QStringLiteral("Marketing"),
+            QStringLiteral("B"),
+            QStringLiteral("complete"),
+            QStringLiteral("Uploaded \xc2\xb7 47 minutes ago"),
+            6.1,
+            6.1,
             0.0,
         },
     };
@@ -239,6 +259,8 @@ void AppController::repositionPopup()
     }
 
     const QRect availableGeometry = screen->availableGeometry();
+    const bool anchoredToTray = trayRect.isValid();
+    constexpr int popupFrameMargin = 8;
     QSize popupSize = m_popupWindow->size();
     if (!popupSize.isValid() || popupSize.isEmpty()) {
         popupSize = m_popupWindow->minimumSize();
@@ -247,13 +269,14 @@ void AppController::repositionPopup()
     int x = availableGeometry.right() - popupSize.width() - 20;
     int y = availableGeometry.top() + 28;
 
-    if (trayRect.isValid()) {
+    if (anchoredToTray) {
         x = trayRect.center().x() - popupSize.width() / 2;
-        y = trayRect.bottom() + 4;
+        y = trayRect.bottom() - popupFrameMargin;
     }
 
     x = qBound(availableGeometry.left() + 16, x, availableGeometry.right() - popupSize.width() - 16);
-    y = qBound(availableGeometry.top() + 12, y, availableGeometry.bottom() - popupSize.height() - 16);
+    const int minY = anchoredToTray ? availableGeometry.top() - popupFrameMargin : availableGeometry.top() + 12;
+    y = qBound(minY, y, availableGeometry.bottom() - popupSize.height() - 16);
 
     m_popupWindow->setPosition(x, y);
 }

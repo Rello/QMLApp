@@ -6,7 +6,7 @@ Button {
     id: root
 
     required property string label
-    required property string iconSource
+    required property string iconName
 
     flat: true
     padding: 0
@@ -28,14 +28,115 @@ Button {
         implicitWidth: 18
         implicitHeight: 18
 
-        Image {
+        Loader {
             anchors.centerIn: parent
+            sourceComponent: {
+                if (root.iconName === "add") {
+                    return addIcon
+                }
+
+                if (root.iconName === "more") {
+                    return moreIcon
+                }
+
+                return settingsIcon
+            }
+        }
+    }
+
+    Component {
+        id: addIcon
+
+        Item {
             width: 16
             height: 16
-            source: root.iconSource
-            sourceSize.width: 16
-            sourceSize.height: 16
-            fillMode: Image.PreserveAspectFit
+
+            Rectangle {
+                anchors.centerIn: parent
+                width: 12
+                height: 2
+                radius: 1
+                color: "#2E6DDA"
+            }
+
+            Rectangle {
+                anchors.centerIn: parent
+                width: 2
+                height: 12
+                radius: 1
+                color: "#2E6DDA"
+            }
+        }
+    }
+
+    Component {
+        id: moreIcon
+
+        Item {
+            width: 16
+            height: 16
+
+            Row {
+                anchors.centerIn: parent
+                spacing: 3
+
+                Repeater {
+                    model: 3
+
+                    Rectangle {
+                        width: 3
+                        height: 3
+                        radius: 1.5
+                        color: "#394557"
+                    }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: settingsIcon
+
+        Item {
+            width: 16
+            height: 16
+
+            Repeater {
+                model: 8
+
+                Item {
+                    width: 16
+                    height: 16
+                    rotation: index * 45
+
+                    Rectangle {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        y: 0
+                        width: 2
+                        height: 4
+                        radius: 1
+                        color: "#3A4557"
+                    }
+                }
+            }
+
+            Rectangle {
+                anchors.centerIn: parent
+                width: 10
+                height: 10
+                radius: 5
+                color: "#F5F7FA"
+                border.color: "#BFC8D4"
+                border.width: 1
+            }
+
+            Rectangle {
+                anchors.centerIn: parent
+                width: 4
+                height: 4
+                radius: 2
+                color: "#3A4557"
+            }
         }
     }
 }
