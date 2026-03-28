@@ -12,7 +12,7 @@ Window {
     width: activityPage ? 372 : 286
     height: activityPage ? 488 : 188
     visible: false
-    color: "transparent"
+    color: "#FFFFFFFF"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
     modality: Qt.NonModal
     title: "CloudPane Prototype"
@@ -39,11 +39,11 @@ Window {
         anchors.margins: 8
         panelRadius: activityPage ? 22 : 16
         baseColor: activityPage ? "#F4F7FBF4" : "#E8F4FAFF"
-        baseBorderColor: activityPage ? "#D7E0EB" : "#DFFFFFFF"
+        baseBorderColor: "#FFFFFFFF"
         overlayStartColor: activityPage ? "#FFFFFFFF" : "#F3FFFFFF"
         overlayMidColor: activityPage ? "#F8FBFF" : "#EAF7FBFF"
         overlayEndColor: activityPage ? "#EEF3F9" : "#E1F2F8FF"
-        highlightBorderColor: activityPage ? "#F7FBFF" : "#F2FFFFFF"
+        highlightBorderColor: "#FFFFFFFF"
 
         ColumnLayout {
             anchors.fill: parent
@@ -102,100 +102,96 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 38
+                Layout.preferredHeight: 30
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: appController.showActivity()
+                }
 
                 RowLayout {
                     anchors.fill: parent
                     spacing: 8
 
                     Image {
-                        Layout.alignment: Qt.AlignTop
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
                         source: "qrc:/qml/icons/status-check.svg"
                         fillMode: Image.PreserveAspectFit
                     }
 
-                    ColumnLayout {
+                    Text {
                         Layout.fillWidth: true
-                        spacing: 1
+                        text: "cloud.nextcloud.com"
+                        color: "#162033"
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuBodyFontSize
+                        font.weight: Font.Normal
+                        elide: Text.ElideRight
+                        renderType: Text.NativeRendering
+                        verticalAlignment: Text.AlignVCenter
+                    }
 
-                        Text {
-                            Layout.fillWidth: true
-                            text: "cloud.nextcloud.com"
-                            color: "#162033"
-                            font.family: Qt.application.font.family
-                            font.pixelSize: root.menuBodyFontSize
-                            font.weight: Font.Normal
-                            elide: Text.ElideRight
-                            renderType: Text.NativeRendering
-                            verticalAlignment: Text.AlignVCenter
-                        }
-
-                        Text {
-                            Layout.fillWidth: true
-                            text: "OK"
-                            color: "#1C9A4B"
-                            font.family: Qt.application.font.family
-                            font.pixelSize: root.menuMetaFontSize
-                            font.weight: Font.Normal
-                            elide: Text.ElideRight
-                            renderType: Text.NativeRendering
-                            verticalAlignment: Text.AlignVCenter
-                        }
+                    Text {
+                        Layout.preferredWidth: 10
+                        Layout.preferredHeight: 12
+                        text: ">"
+                        color: "#1A2237"
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuMetaFontSize
+                        font.weight: Font.Normal
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        renderType: Text.NativeRendering
+                        opacity: 0.6
                     }
                 }
             }
 
-            Rectangle {
-                Layout.fillWidth: true
-                height: 1
-                color: "#24A0B3C8"
-            }
-
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 38
+                Layout.preferredHeight: 30
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: appController.showActivity()
+                }
 
                 RowLayout {
                     anchors.fill: parent
                     spacing: 8
 
                     Image {
-                        Layout.alignment: Qt.AlignTop
                         Layout.preferredWidth: 16
                         Layout.preferredHeight: 16
                         source: "qrc:/qml/icons/status-check.svg"
                         fillMode: Image.PreserveAspectFit
                     }
 
-                    ColumnLayout {
+                    Text {
                         Layout.fillWidth: true
-                        spacing: 1
+                        text: "localhost:3032"
+                        color: "#162033"
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuBodyFontSize
+                        font.weight: Font.Normal
+                        elide: Text.ElideRight
+                        renderType: Text.NativeRendering
+                        verticalAlignment: Text.AlignVCenter
+                    }
 
-                        Text {
-                            Layout.fillWidth: true
-                            text: "localhost:3032"
-                            color: "#162033"
-                            font.family: Qt.application.font.family
-                            font.pixelSize: root.menuBodyFontSize
-                            font.weight: Font.Normal
-                            elide: Text.ElideRight
-                            renderType: Text.NativeRendering
-                            verticalAlignment: Text.AlignVCenter
-                        }
-
-                        Text {
-                            Layout.fillWidth: true
-                            text: "OK"
-                            color: "#1C9A4B"
-                            font.family: Qt.application.font.family
-                            font.pixelSize: root.menuMetaFontSize
-                            font.weight: Font.Normal
-                            elide: Text.ElideRight
-                            renderType: Text.NativeRendering
-                            verticalAlignment: Text.AlignVCenter
-                        }
+                    Text {
+                        Layout.preferredWidth: 10
+                        Layout.preferredHeight: 12
+                        text: ">"
+                        color: "#1A2237"
+                        font.family: Qt.application.font.family
+                        font.pixelSize: root.menuMetaFontSize
+                        font.weight: Font.Normal
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        renderType: Text.NativeRendering
+                        opacity: 0.6
                     }
                 }
             }

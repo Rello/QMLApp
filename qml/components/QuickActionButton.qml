@@ -19,9 +19,8 @@ Button {
         implicitWidth: 28
         implicitHeight: 28
         radius: 8
-        color: root.down ? "#32E7F1FA" : root.hovered ? "#24E7F1FA" : "#18FFFFFF"
-        border.color: root.hovered || root.down ? "#55A4B6C9" : "#34A4B6C9"
-        border.width: 1
+        color: root.down ? "#16000000" : root.hovered ? "#0C000000" : "transparent"
+        border.width: 0
     }
 
     contentItem: Item {
@@ -56,7 +55,7 @@ Button {
                 width: 12
                 height: 2
                 radius: 1
-                color: "#2E6DDA"
+                color: "#3A4557"
             }
 
             Rectangle {
@@ -64,7 +63,7 @@ Button {
                 width: 2
                 height: 12
                 radius: 1
-                color: "#2E6DDA"
+                color: "#3A4557"
             }
         }
     }
@@ -125,8 +124,8 @@ Button {
                 width: 10
                 height: 10
                 radius: 5
-                color: "#F5F7FA"
-                border.color: "#BFC8D4"
+                color: "transparent"
+                border.color: "#3A4557"
                 border.width: 1
             }
 
