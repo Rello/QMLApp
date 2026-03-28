@@ -28,16 +28,16 @@ Rectangle {
             Layout.preferredWidth: 44
             Layout.preferredHeight: 44
             radius: 14
-            color: "#F4F7FB"
-            border.color: "#D8E0EA"
+            color: root.iconSource === "W" ? "#E8EEFF" : root.iconSource === "X" ? "#E5F5EA" : "#F8E8E1"
+            border.color: root.iconSource === "W" ? "#BCCBFF" : root.iconSource === "X" ? "#B9E2C3" : "#EDC1B0"
             border.width: 1
 
-            Image {
+            Text {
                 anchors.centerIn: parent
-                width: 26
-                height: 26
-                source: root.iconSource
-                fillMode: Image.PreserveAspectFit
+                text: root.iconSource
+                color: root.iconSource === "W" ? "#2F61D8" : root.iconSource === "X" ? "#1F8F4C" : "#D9542C"
+                font.pixelSize: 18
+                font.weight: Font.Bold
             }
         }
 
@@ -89,4 +89,3 @@ Rectangle {
         }
     }
 }
-

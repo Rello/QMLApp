@@ -20,7 +20,6 @@ jobs:
           host: "mac"
           target: "desktop"
           arch: "clang_64"
-          modules: "qtsvg"
           cache: "true"
 
       - name: Build app bundle
@@ -41,4 +40,3 @@ jobs:
           name: CloudPanePrototype-macos
           path: dist/CloudPanePrototype-macos.zip
           if-no-files-found: error
-

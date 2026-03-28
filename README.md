@@ -8,6 +8,7 @@ CloudPane Prototype is a Qt 6 tray-style showcase for macOS. It uses a small C++
 - A frameless popup-style window inspired by the reference tray UI
 - Two views: overview and sync activity
 - Deterministic mock sync progress driven by C++ models and timers
+- No extra Qt add-on modules beyond the base desktop install
 - A GitHub Actions build that produces a zipped `.app` artifact
 
 ## Build strategy
@@ -43,7 +44,7 @@ The workflow file is at [`.github/workflows/build-macos.yml`](/Users/Rello/Downl
 It will:
 
 - run on `macos-latest`
-- provision Qt 6.7.3 with SVG support
+- provision the base Qt 6.7.3 desktop toolchain
 - build the app through [`scripts/build-macos.sh`](/Users/Rello/Downloads/docker/QMLApp/scripts/build-macos.sh)
 - zip the resulting `.app`
 - upload the zip as a workflow artifact
@@ -54,7 +55,7 @@ If you later want a local build, you need:
 
 - Xcode command line tools or full Xcode
 - CMake
-- Qt 6 with `Core`, `Gui`, `Qml`, `Quick`, `QuickControls2`, `Svg`, and `Widgets`
+- Qt 6 with `Core`, `Gui`, `Qml`, `Quick`, `QuickControls2`, and `Widgets`
 
 Then run:
 

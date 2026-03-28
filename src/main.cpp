@@ -2,6 +2,8 @@
 #include <QApplication>
 #include <QCoreApplication>
 #include <QIcon>
+#include <QPainter>
+#include <QPixmap>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QMenu>
@@ -9,6 +11,30 @@
 #include <QSystemTrayIcon>
 
 #include "appcontroller.h"
+
+namespace {
+QIcon createTrayIcon()
+{
+    QPixmap pixmap(22, 22);
+    pixmap.fill(Qt::transparent);
+
+    QPainter painter(&pixmap);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setPen(Qt::NoPen);
+
+    painter.setBrush(QColor("#4DBDFF"));
+    painter.drawEllipse(QRectF(3.0, 9.0, 8.5, 7.0));
+    painter.drawEllipse(QRectF(7.5, 6.2, 8.5, 9.3));
+    painter.drawEllipse(QRectF(12.0, 8.8, 6.8, 6.3));
+    painter.drawRoundedRect(QRectF(4.0, 11.0, 13.2, 4.6), 2.4, 2.4);
+
+    painter.setBrush(QColor(255, 255, 255, 75));
+    painter.drawEllipse(QRectF(7.6, 7.0, 5.4, 3.0));
+
+    painter.end();
+    return QIcon(pixmap);
+}
+}
 
 int main(int argc, char *argv[])
 {
@@ -35,7 +61,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    QSystemTrayIcon trayIcon(QIcon(QStringLiteral(":/qml/icons/tray-cloud.svg")));
+    QSystemTrayIcon trayIcon(createTrayIcon());
     trayIcon.setToolTip(QStringLiteral("CloudPane Prototype"));
 
     QMenu trayMenu;
@@ -61,4 +87,3 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
-

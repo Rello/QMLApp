@@ -14,7 +14,6 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS
     Qml
     Quick
     QuickControls2
-    Svg
     Widgets
 )
 
@@ -41,23 +40,6 @@ qt_add_qml_module(CloudPanePrototype
         qml/components/SyncRow.qml
 )
 
-qt_add_resources(CloudPanePrototype "cloudpane_assets"
-    PREFIX "/"
-    FILES
-        qml/icons/tray-cloud.svg
-        qml/icons/status-check.svg
-        qml/icons/home.svg
-        qml/icons/back.svg
-        qml/icons/sync.svg
-        qml/icons/folder.svg
-        qml/icons/share.svg
-        qml/icons/archive.svg
-        qml/icons/more.svg
-        qml/icons/file-doc.svg
-        qml/icons/file-sheet.svg
-        qml/icons/file-slide.svg
-)
-
 target_link_libraries(CloudPanePrototype
     PRIVATE
         Qt6::Core
@@ -65,7 +47,6 @@ target_link_libraries(CloudPanePrototype
         Qt6::Qml
         Qt6::Quick
         Qt6::QuickControls2
-        Qt6::Svg
         Qt6::Widgets
 )
 
@@ -82,4 +63,3 @@ install(TARGETS CloudPanePrototype
     BUNDLE DESTINATION .
     RUNTIME DESTINATION bin
 )
-

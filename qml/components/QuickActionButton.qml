@@ -23,15 +23,19 @@ Button {
     contentItem: ColumnLayout {
         spacing: 6
 
-        Item {
+        Rectangle {
             Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: 22
-            Layout.preferredHeight: 22
+            Layout.preferredWidth: 28
+            Layout.preferredHeight: 28
+            radius: 10
+            color: "#24FFFFFF"
 
-            Image {
-                anchors.fill: parent
-                source: root.iconSource
-                fillMode: Image.PreserveAspectFit
+            Text {
+                anchors.centerIn: parent
+                text: root.iconSource
+                color: "#1B2942"
+                font.pixelSize: root.iconSource.length > 1 ? 10 : 12
+                font.weight: Font.Bold
             }
         }
 
@@ -44,4 +48,3 @@ Button {
         }
     }
 }
-

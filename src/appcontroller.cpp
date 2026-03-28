@@ -12,7 +12,7 @@ QVector<SyncItem> initialSyncItems()
         {
             QStringLiteral("Program Evaluation Report.docx"),
             QStringLiteral("Quarterly narrative update"),
-            QStringLiteral(":/qml/icons/file-doc.svg"),
+            QStringLiteral("W"),
             QStringLiteral("syncing"),
             {},
             1.6,
@@ -22,7 +22,7 @@ QVector<SyncItem> initialSyncItems()
         {
             QStringLiteral("Budget Report.xlsx"),
             QStringLiteral("Finance workspace"),
-            QStringLiteral(":/qml/icons/file-sheet.svg"),
+            QStringLiteral("X"),
             QStringLiteral("syncing"),
             {},
             0.37,
@@ -32,7 +32,7 @@ QVector<SyncItem> initialSyncItems()
         {
             QStringLiteral("Product Storytelling.pptx"),
             QStringLiteral("Narrative deck"),
-            QStringLiteral(":/qml/icons/file-slide.svg"),
+            QStringLiteral("P"),
             QStringLiteral("complete"),
             QStringLiteral("Uploaded \xc2\xb7 21 minutes ago"),
             2.8,
@@ -49,10 +49,10 @@ AppController::AppController(QObject *parent)
     , m_syncActivityModel(this)
 {
     m_quickActionsModel.setItems({
-        { QStringLiteral("files"), QStringLiteral("Files"), QStringLiteral(":/qml/icons/folder.svg") },
-        { QStringLiteral("share"), QStringLiteral("Share"), QStringLiteral(":/qml/icons/share.svg") },
-        { QStringLiteral("archive"), QStringLiteral("Archive"), QStringLiteral(":/qml/icons/archive.svg") },
-        { QStringLiteral("more"), QStringLiteral("Pulse"), QStringLiteral(":/qml/icons/more.svg") },
+        { QStringLiteral("files"), QStringLiteral("Files"), QStringLiteral("F") },
+        { QStringLiteral("share"), QStringLiteral("Share"), QStringLiteral("S") },
+        { QStringLiteral("archive"), QStringLiteral("Archive"), QStringLiteral("A") },
+        { QStringLiteral("more"), QStringLiteral("Pulse"), QStringLiteral("...") },
     });
 
     seedScenario();

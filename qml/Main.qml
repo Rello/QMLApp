@@ -51,12 +51,12 @@ Window {
                     border.color: "#7BC9FF"
                     border.width: 1
 
-                    Image {
+                    Text {
                         anchors.centerIn: parent
-                        width: 24
-                        height: 24
-                        source: "qrc:/qml/icons/tray-cloud.svg"
-                        fillMode: Image.PreserveAspectFit
+                        text: "CP"
+                        color: "#1657C6"
+                        font.pixelSize: 13
+                        font.weight: Font.Bold
                     }
                 }
 
@@ -89,13 +89,13 @@ Window {
                         radius: 12
                         color: modeButton.down ? "#22FFFFFF" : "transparent"
                     }
-                    contentItem: Image {
-                        source: appController.currentPage === "activity"
-                            ? "qrc:/qml/icons/home.svg"
-                            : "qrc:/qml/icons/sync.svg"
-                        sourceSize.width: 18
-                        sourceSize.height: 18
-                        fillMode: Image.PreserveAspectFit
+                    contentItem: Text {
+                        text: appController.currentPage === "activity" ? "H" : "S"
+                        color: "#1A2237"
+                        font.pixelSize: 13
+                        font.weight: Font.Bold
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
                     }
                     onClicked: {
                         if (appController.currentPage === "activity") {
@@ -158,11 +158,12 @@ Window {
                         border.color: "#89DCA9"
                         border.width: 1
 
-                        Image {
+                        Text {
                             anchors.centerIn: parent
-                            width: 22
-                            height: 22
-                            source: "qrc:/qml/icons/status-check.svg"
+                            text: "OK"
+                            color: "#16964A"
+                            font.pixelSize: 12
+                            font.weight: Font.Bold
                         }
                     }
 
@@ -186,11 +187,13 @@ Window {
                         }
                     }
 
-                    Image {
+                    Text {
                         Layout.preferredWidth: 14
                         Layout.preferredHeight: 14
-                        source: "qrc:/qml/icons/back.svg"
-                        rotation: 180
+                        text: ">"
+                        color: "#1A2237"
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
                         opacity: 0.6
                     }
                 }
@@ -262,11 +265,11 @@ Window {
                 contentItem: RowLayout {
                     spacing: 8
 
-                    Image {
-                        source: "qrc:/qml/icons/back.svg"
-                        sourceSize.width: 12
-                        sourceSize.height: 12
-                        fillMode: Image.PreserveAspectFit
+                    Text {
+                        text: "<"
+                        color: "#1D2940"
+                        font.pixelSize: 14
+                        font.weight: Font.Bold
                     }
 
                     Text {
@@ -300,11 +303,12 @@ Window {
                         border.color: "#8AC5FF"
                         border.width: 1
 
-                        Image {
+                        Text {
                             anchors.centerIn: parent
-                            width: 22
-                            height: 22
-                            source: "qrc:/qml/icons/sync.svg"
+                            text: "S"
+                            color: "#2F88FF"
+                            font.pixelSize: 15
+                            font.weight: Font.Bold
                         }
                     }
 
