@@ -234,7 +234,10 @@ void AppController::repositionPopup()
     }
 
     const QRect availableGeometry = screen->availableGeometry();
-    const QSize popupSize = m_popupWindow->size().toSize();
+    QSize popupSize = m_popupWindow->size();
+    if (!popupSize.isValid() || popupSize.isEmpty()) {
+        popupSize = m_popupWindow->minimumSize();
+    }
 
     int x = availableGeometry.right() - popupSize.width() - 20;
     int y = availableGeometry.top() + 28;
