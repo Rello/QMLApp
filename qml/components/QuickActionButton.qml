@@ -10,41 +10,30 @@ Button {
 
     flat: true
     padding: 0
+    hoverEnabled: true
+
+    ToolTip.visible: hovered
+    ToolTip.text: label
 
     background: Rectangle {
-        implicitWidth: 74
-        implicitHeight: 74
-        radius: 22
-        color: root.down ? "#1EFFFFFF" : "#14FFFFFF"
-        border.color: "#35FFFFFF"
+        implicitWidth: 38
+        implicitHeight: 38
+        radius: 11
+        color: root.down ? "#2AFFFFFF" : root.hovered ? "#1EFFFFFF" : "transparent"
+        border.color: root.hovered || root.down ? "#35A4B6C9" : "transparent"
         border.width: 1
     }
 
-    contentItem: ColumnLayout {
-        spacing: 6
-
-        Rectangle {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.preferredWidth: 28
-            Layout.preferredHeight: 28
-            radius: 10
-            color: "#24FFFFFF"
-
-            Text {
-                anchors.centerIn: parent
-                text: root.iconSource
-                color: "#1B2942"
-                font.pixelSize: root.iconSource.length > 1 ? 10 : 12
-                font.weight: Font.Bold
-            }
-        }
+    contentItem: Item {
+        implicitWidth: 38
+        implicitHeight: 38
 
         Text {
-            Layout.alignment: Qt.AlignHCenter
-            text: root.label
-            color: "#23314A"
-            font.pixelSize: 11
-            font.weight: Font.Medium
+            anchors.centerIn: parent
+            text: root.iconSource
+            color: "#182338"
+            font.pixelSize: root.iconSource === "⋯" ? 18 : 15
+            font.weight: Font.DemiBold
         }
     }
 }

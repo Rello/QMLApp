@@ -49,10 +49,10 @@ AppController::AppController(QObject *parent)
     , m_syncActivityModel(this)
 {
     m_quickActionsModel.setItems({
-        { QStringLiteral("files"), QStringLiteral("Files"), QStringLiteral("F") },
-        { QStringLiteral("share"), QStringLiteral("Share"), QStringLiteral("S") },
-        { QStringLiteral("archive"), QStringLiteral("Archive"), QStringLiteral("A") },
-        { QStringLiteral("more"), QStringLiteral("Pulse"), QStringLiteral("...") },
+        { QStringLiteral("files"), QStringLiteral("Files"), QStringLiteral("□") },
+        { QStringLiteral("add"), QStringLiteral("Add"), QStringLiteral("+") },
+        { QStringLiteral("settings"), QStringLiteral("Settings"), QStringLiteral("⚙") },
+        { QStringLiteral("more"), QStringLiteral("More"), QStringLiteral("⋯") },
     });
 
     seedScenario();
@@ -129,20 +129,20 @@ void AppController::triggerAction(const QString &id)
         return;
     }
 
-    if (id == QStringLiteral("share")) {
+    if (id == QStringLiteral("add")) {
+        advanceScenario();
+        return;
+    }
+
+    if (id == QStringLiteral("settings")) {
         showHome();
         return;
     }
 
-    if (id == QStringLiteral("archive")) {
+    if (id == QStringLiteral("more")) {
         if (m_syncActivityModel.archiveCompletedItem()) {
             refreshDerivedState();
         }
-        return;
-    }
-
-    if (id == QStringLiteral("more")) {
-        advanceScenario();
     }
 }
 

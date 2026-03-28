@@ -8,8 +8,8 @@ import CloudPane
 Window {
     id: root
 
-    width: 388
-    height: appController.currentPage === "activity" ? 560 : 472
+    width: 332
+    height: appController.currentPage === "activity" ? 516 : 294
     visible: false
     color: "transparent"
     flags: Qt.Tool | Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint
@@ -32,21 +32,21 @@ Window {
         id: panel
 
         anchors.fill: parent
-        anchors.margins: 12
+        anchors.margins: 8
 
         ColumnLayout {
             anchors.fill: parent
-            anchors.margins: 22
-            spacing: 18
+            anchors.margins: 16
+            spacing: 10
 
             RowLayout {
                 Layout.fillWidth: true
-                spacing: 12
+                spacing: 10
 
                 Rectangle {
-                    Layout.preferredWidth: 42
-                    Layout.preferredHeight: 42
-                    radius: 14
+                    Layout.preferredWidth: 34
+                    Layout.preferredHeight: 34
+                    radius: 11
                     color: "#DDF4FF"
                     border.color: "#7BC9FF"
                     border.width: 1
@@ -55,7 +55,7 @@ Window {
                         anchors.centerIn: parent
                         text: "CP"
                         color: "#1657C6"
-                        font.pixelSize: 13
+                        font.pixelSize: 11
                         font.weight: Font.Bold
                     }
                 }
@@ -67,7 +67,7 @@ Window {
                     Text {
                         text: appController.accountName
                         color: "#1A2237"
-                        font.pixelSize: 14
+                        font.pixelSize: 13
                         font.weight: Font.DemiBold
                         elide: Text.ElideRight
                     }
@@ -75,7 +75,7 @@ Window {
                     Text {
                         text: appController.currentPage === "activity" ? "Sync Activity" : "Tray Showcase"
                         color: "#637087"
-                        font.pixelSize: 11
+                        font.pixelSize: 10
                     }
                 }
 
@@ -84,15 +84,15 @@ Window {
 
                     flat: true
                     background: Rectangle {
-                        implicitWidth: 34
-                        implicitHeight: 34
-                        radius: 12
-                        color: modeButton.down ? "#22FFFFFF" : "transparent"
+                        implicitWidth: 26
+                        implicitHeight: 26
+                        radius: 8
+                        color: modeButton.down ? "#22FFFFFF" : modeButton.hovered ? "#16FFFFFF" : "transparent"
                     }
                     contentItem: Text {
                         text: appController.currentPage === "activity" ? "H" : "S"
                         color: "#1A2237"
-                        font.pixelSize: 13
+                        font.pixelSize: 12
                         font.weight: Font.Bold
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -115,7 +115,7 @@ Window {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: appController.currentPage === "activity" ? 432 : 304
+                Layout.preferredHeight: appController.currentPage === "activity" ? 406 : 202
 
                 Loader {
                     anchors.fill: parent
@@ -130,13 +130,13 @@ Window {
 
         ColumnLayout {
             anchors.fill: parent
-            spacing: 16
+            spacing: 10
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 94
-                radius: 22
-                color: "#B9FFFFFF"
+                Layout.preferredHeight: 72
+                radius: 18
+                color: "#C7FFFFFF"
                 border.color: "#53FFFFFF"
                 border.width: 1
 
@@ -147,13 +147,13 @@ Window {
 
                 RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 18
-                    spacing: 16
+                    anchors.margins: 14
+                    spacing: 12
 
                     Rectangle {
-                        Layout.preferredWidth: 44
-                        Layout.preferredHeight: 44
-                        radius: 22
+                        Layout.preferredWidth: 34
+                        Layout.preferredHeight: 34
+                        radius: 17
                         color: "#E5FFF0"
                         border.color: "#89DCA9"
                         border.width: 1
@@ -162,7 +162,7 @@ Window {
                             anchors.centerIn: parent
                             text: "OK"
                             color: "#16964A"
-                            font.pixelSize: 12
+                            font.pixelSize: 10
                             font.weight: Font.Bold
                         }
                     }
@@ -174,7 +174,7 @@ Window {
                         Text {
                             text: appController.statusTitle
                             color: "#162033"
-                            font.pixelSize: 17
+                            font.pixelSize: 13
                             font.weight: Font.DemiBold
                             elide: Text.ElideRight
                         }
@@ -182,14 +182,14 @@ Window {
                         Text {
                             text: appController.statusSubtitle
                             color: "#617089"
-                            font.pixelSize: 12
+                            font.pixelSize: 10
                             elide: Text.ElideRight
                         }
                     }
 
                     Text {
-                        Layout.preferredWidth: 14
-                        Layout.preferredHeight: 14
+                        Layout.preferredWidth: 12
+                        Layout.preferredHeight: 12
                         text: ">"
                         color: "#1A2237"
                         horizontalAlignment: Text.AlignHCenter
@@ -201,29 +201,49 @@ Window {
 
             Rectangle {
                 Layout.fillWidth: true
-                Layout.preferredHeight: 84
-                radius: 20
-                color: "#8BFFFFFF"
+                Layout.preferredHeight: 50
+                radius: 16
+                color: "#BBFFFFFF"
                 border.color: "#42FFFFFF"
                 border.width: 1
 
-                ColumnLayout {
+                RowLayout {
                     anchors.fill: parent
-                    anchors.margins: 18
-                    spacing: 4
+                    anchors.margins: 14
+                    spacing: 10
 
-                    Text {
-                        text: "Expand Team Capacity"
-                        color: "#172133"
-                        font.pixelSize: 16
-                        font.weight: Font.DemiBold
+                    Rectangle {
+                        Layout.preferredWidth: 24
+                        Layout.preferredHeight: 24
+                        radius: 12
+                        color: "#E9F4FF"
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: "+"
+                            color: "#2F88FF"
+                            font.pixelSize: 14
+                            font.weight: Font.Bold
+                        }
                     }
 
-                    Text {
-                        text: "A showcase CTA slot for storage, upgrades, or cross-sell concepts."
-                        color: "#627187"
-                        font.pixelSize: 12
-                        wrapMode: Text.WordWrap
+                    ColumnLayout {
+                        Layout.fillWidth: true
+                        spacing: 1
+
+                        Text {
+                            text: "Get More Storage"
+                            color: "#172133"
+                            font.pixelSize: 12
+                            font.weight: Font.DemiBold
+                        }
+
+                        Text {
+                            text: "Compact CTA row for upgrades and expansion."
+                            color: "#627187"
+                            font.pixelSize: 10
+                            elide: Text.ElideRight
+                        }
                     }
                 }
             }
@@ -236,13 +256,13 @@ Window {
 
             RowLayout {
                 Layout.fillWidth: true
-                spacing: 14
+                Layout.alignment: Qt.AlignHCenter
+                spacing: 8
 
                 Repeater {
                     model: appController.quickActionsModel
 
                     QuickActionButton {
-                        Layout.fillWidth: true
                         label: model.label
                         iconSource: model.iconName
                         onClicked: appController.triggerAction(model.id)
